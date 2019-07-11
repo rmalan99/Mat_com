@@ -1,12 +1,31 @@
-#nav{
-    background:#fb8c00;
-    height: 90px;}
-#job{
-    background: #aaf033;
-    height: 630px;
+#operaciones,
+#box {
+    height: 680px;
+    margin-top: 10px;
 }
-#result{
-    background: #aaff33;
-    height: 630px;
-   
+
+#option {
+    margin-top: 50px;
+    height: 70px;
+}
+
+#feet {
+    height: 50px;
+}
+
+body {
+    padding: 5px;
+}
+
+.p {
+    border: red;
+}
+
+input {
+    border: 2px solid blue;
+}
+
+#box,
+#option {
+    background: whitesmoke;
 }

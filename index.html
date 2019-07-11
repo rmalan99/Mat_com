@@ -1,25 +1,107 @@
 <!DOCTYPE html>
- <html class="no-js">
-    <head>
-        <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./css/css.css">
-    </head>
-    <body>
-        
-        
-        
+<html>
 
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script src="/js/js.js" async defer></script>
-    </body>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="./css/css.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+
+<body>
+    <main>
+        <!-- nav -->
+        <nav>
+            <!--on nav alta up -->
+            <div class="nav-wrapper black">
+                <div class="container">
+                    <div>
+                        <a class="brand-logo center">logo</a>
+                    </div>
+                    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a>ABOUT</a>
+                        </li>
+                        <li>
+                            <a>SCRIPT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--off nav up-->
+            <!-- on nav movile -->
+            <ul class="sidenav" id="nav-mobile">
+                <li>
+                    <a class="waves-effect waves-light">Progreccion arimetica</a>
+                </li>
+                <li>
+                    <a class="waves-effect waves-purple">progreccion Geometrica</a>
+                </li>
+                <li><a class="waves-effect waves-purple">interes simple</a></li>
+                <li>
+                    <a class="waves-effect waves-purple">interes compuesto</a>
+                </li>
+                <li>
+                    <a class="waves-effect waves-purple">progreccion Geometrica</a>
+                </li>
+                <li>
+                    <a class="waves-effect waves-purple">ecuaciones 2do grado</a>
+                </li>
+            </ul>
+            <!-- off nav movile -->
+        </nav>
+        <!-- content -->
+
+        <div class="row">
+            <!-- option  -->
+            <div class="col l4 orange hide-on-med-and-down" id="operaciones">
+                <div class="container">
+                    <div>
+                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">Progreccion arimetica</a>
+                    </div>
+                    <div>
+                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">progreccion Geometrica</a></div>
+                    <div>
+                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">interes simple</a> </div>
+                    <div>
+                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">interes compuesto</a></div>
+                    <div>
+                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">ecuaciones 2do grado</a></div>
+                </div>
+            </div>
+            <!-- off option -->
+            <!-- catche object -->
+            <div class="col s12 m12 l8" id="box">
+                <div class="col s2 offset-s5 center" id="datos">
+                    <input type="text" placeholder="" id="dato1" class="p">
+                    <input type="text" placeholder="" id="dato2" class="p">
+                    <input type="text" placeholder="" id="dato3" class="p">
+                    <div id="result">
+
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <!-- catche object -->
+
+
+    </main>
+    <script type="text/javascript " src="js/materialize.min.js "></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            M.AutoInit();
+        });
+    </script>
+    <style>
+
+    </style>
+</body>
+
+
 </html>
