@@ -11,18 +11,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-
 <body>
-    <main>
-        <!-- nav -->
+
+    <header>
         <nav>
             <!--on nav alta up -->
             <div class="nav-wrapper black">
+
+                <!--Si pones esto dentro de un container no se pondra donde deberia-->
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <div class="container">
                     <div>
                         <a class="brand-logo center">logo</a>
                     </div>
-                    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
                     <ul class="right hide-on-med-and-down">
                         <li>
                             <a>ABOUT</a>
@@ -34,27 +36,34 @@
                 </div>
             </div>
             <!--off nav up-->
-            <!-- on nav movile -->
-            <ul class="sidenav" id="nav-mobile">
-                <li>
-                    <a class="waves-effect waves-light">Progreccion arimetica</a>
-                </li>
-                <li>
-                    <a class="waves-effect waves-purple">progreccion Geometrica</a>
-                </li>
-                <li><a class="waves-effect waves-purple">interes simple</a></li>
-                <li>
-                    <a class="waves-effect waves-purple">interes compuesto</a>
-                </li>
-                <li>
-                    <a class="waves-effect waves-purple">progreccion Geometrica</a>
-                </li>
-                <li>
-                    <a class="waves-effect waves-purple">ecuaciones 2do grado</a>
-                </li>
-            </ul>
+
             <!-- off nav movile -->
         </nav>
+        <!--El nav mobile va fuera de el elemento nav-->
+        <!-- on nav movile -->
+        <ul class="sidenav" id="nav-mobile">
+            <li>
+                <a class="waves-effect waves-light">Progreccion arimetica</a>
+            </li>
+            <li>
+                <a class="waves-effect waves-purple">progreccion Geometrica</a>
+            </li>
+            <li><a class="waves-effect waves-purple">interes simple</a></li>
+            <li>
+                <a class="waves-effect waves-purple">interes compuesto</a>
+            </li>
+            <li>
+                <a class="waves-effect waves-purple">progreccion Geometrica</a>
+            </li>
+            <li>
+                <a class="waves-effect waves-purple">ecuaciones 2do grado</a>
+            </li>
+        </ul>
+    </header>
+    <!--El main debe ir debajo del header-->
+    <main>
+        <!-- nav -->
+
         <!-- content -->
 
         <div class="row">
@@ -62,16 +71,26 @@
             <div class="col l4 orange hide-on-med-and-down" id="operaciones">
                 <div class="container">
                     <div>
-                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">Progreccion arimetica</a>
+                        <a id="option"
+                            class="col l12 black-text center-align btn btn-block waves-effect waves-light">Progreccion
+                            arimetica</a>
                     </div>
                     <div>
-                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">progreccion Geometrica</a></div>
+                        <a id="option"
+                            class="col l12 black-text center-align btn btn-block waves-effect waves-light">progreccion
+                            Geometrica</a></div>
                     <div>
-                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">interes simple</a> </div>
+                        <a id="option"
+                            class="col l12 black-text center-align btn btn-block waves-effect waves-light">interes
+                            simple</a> </div>
                     <div>
-                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">interes compuesto</a></div>
+                        <a id="option"
+                            class="col l12 black-text center-align btn btn-block waves-effect waves-light">interes
+                            compuesto</a></div>
                     <div>
-                        <a id="option" class="col l12 black-text center-align btn btn-block waves-effect waves-light">ecuaciones 2do grado</a></div>
+                        <a id="option"
+                            class="col l12 black-text center-align btn btn-block waves-effect waves-light">ecuaciones
+                            2do grado</a></div>
                 </div>
             </div>
             <!-- off option -->
@@ -88,20 +107,22 @@
                     </div>
                 </div>
             </div>
-            <!-- catche object -->
 
 
     </main>
-    <script type="text/javascript " src="js/materialize.min.js "></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            M.AutoInit();
-        });
-    </script>
-    <style>
 
-    </style>
 </body>
 
 
 </html>
+<!-- catche object -->
+<!--Los elementos style y script si se ponen fuera de el header van fuera de la etiqueta html-->
+<script type="text/javascript " src="js/materialize.min.js "></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        M.AutoInit();
+    });
+</script>
+<style>
+
+</style>
