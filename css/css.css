@@ -29,3 +29,8 @@ input {
 #option {
     background: whitesmoke;
 }
+
+#result {
+    height: 400px;
+    margin: 6px;
+}
