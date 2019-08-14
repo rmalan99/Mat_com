@@ -1,26 +1,70 @@
-//declare var M:any;
-
-var option=document.body.getElementsByClassName("container")[1].getElementsByTagName("div");
-//var elem=document.querySelector(".tooltipped");
-//var instance=M.Tooltip.init(elem,{});
-let btn=document.getElementById("accion").getElementsByTagName("a")[0];//.getElementsByTagName("i")[0].innerHTML="send" 
-
-function fan(child:number,...valores: string[]){
-    let text:string=option[child].getElementsByTagName("a")[0].innerHTML;
-    document.getElementById("title").innerHTML=text;
-    let datos=document.getElementById("datos");
-    // let btn=document.getElementById("accion").getElementsByTagName("a")[0];
-    // btn.getElementsByTagName("i")[0].innerHTML="send";
+// let btn=document.getElementById("accion").getElementsByTagName("a")[0];
+    // btn.getElementsByTagName("i")[0].textContent="send";
     // btn.setAttribute("data-tooltip","limpiar panel"); 
-    for(var i=0;i<datos.childElementCount;i++){                          
-        datos.getElementsByTagName("input")[i].setAttribute("placeholder",valores[i]);
-    }
-}
+//.getElementsByTagName("i")[0].textContent="send" 
+var option=document.body.getElementsByClassName("container")[1].getElementsByTagName("div");
+var btn=document.getElementById("accion").getElementsByTagName("a")[0];
+var datos=document.getElementById("datos");
+
 option[0].addEventListener("click",() => {fan(0,"an1","an2","ani")});
 option[1].addEventListener("click",() => {fan(1,"g_a1","g_a2","g_an")});
 option[2].addEventListener("click",() => {fan(2,"va","n","n")});
 option[3].addEventListener("click",() => {fan(3,"va","n","i")});
 option[4].addEventListener("click",() => {fan(4,"a","b","c")});
+btn.addEventListener("click",()=> {accion()});
 
+function fan(child:number,...valores: string[]){
+    let text=option[child].firstElementChild.textContent;
+    alert(text);
+    document.getElementById("title").textContent=text;
+    for(var i=0;i<datos.childElementCount;i++){                          
+        datos.getElementsByTagName("input")[i].setAttribute("placeholder",valores[i]);
+    }
+}
+function accion(){
+    let a:string=btn.getElementsByTagName("i")[0].textContent;
+    if (a == "menu"){
+        let titulo:string= document.getElementById("title").textContent;
+        if (titulo == "Progreccion arimetica"){
+            cambio();
+            pro_ari();
+        }
+    }
+    if (a == "delete"){
+       document.getElementById("result").innerHTML="";
+       cambio();
+    }
+}
+function cambio(){
+    let a:string=btn.getElementsByTagName("i")[0].textContent;
+    if (a=="menu"){
+        let a:string=btn.getElementsByTagName("i")[0].textContent="delete";
+        btn.setAttribute("data-tooltip","borrar datos");
+    }else{
+        let a:string=btn.getElementsByTagName("i")[0].textContent="menu";
+        btn.setAttribute("data-tooltip","calcular valores");
+    }
 
+}
+function escritor(titulo:string,resultados:number){
 
+    let new_oject=document.createElement("p");
+    new_oject.innerHTML=`<h4 style='red'>${titulo}</h4><p>${resultados}</p>`
+    let ojete=document.getElementById("result");
+    ojete.appendChild(new_oject);
+}
+
+function pro_ari(){
+    //[an1=0]/[an2=1]/[ani=2]
+    let coleccion:Array<number>=[],diferencia:number,calculo:number,total:number;
+    for (var _i=0;_i<datos.childElementCount;_i++){
+        coleccion[_i]= parseInt(datos.getElementsByTagName("input")[_i].value);
+    }
+    diferencia=(coleccion[1]-coleccion[0]);
+    escritor("diferencia",diferencia);
+    calculo=((coleccion[2]-1)*diferencia);
+    escritor("valor en la posicion",coleccion[2]);
+    total=calculo + diferencia;  
+    escritor("es",total);
+    
+}
