@@ -14,6 +14,7 @@ option[4].addEventListener("click",() => {fan(4,"a","b","c")});
 btn.addEventListener("click",()=> {accion()});
 
 function fan(child:number,...valores: string[]){
+    datos.classList.remove("hide");
     let text=option[child].firstElementChild.textContent;
     alert(text);
     document.getElementById("title").textContent=text;
@@ -31,6 +32,8 @@ function accion(){
         }
     }
     if (a == "delete"){
+        document.getElementById("title").textContent="";
+        datos.classList.add("hide");
        document.getElementById("result").innerHTML="";
        cambio();
     }

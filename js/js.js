@@ -16,6 +16,7 @@ function fan(child) {
     for (var _a = 1; _a < arguments.length; _a++) {
         valores[_a - 1] = arguments[_a];
     }
+    datos.classList.remove("hide");
     var text = option[child].firstElementChild.textContent;
     alert(text);
     document.getElementById("title").textContent = text;
@@ -33,12 +34,13 @@ function accion() {
         }
     }
     if (a == "delete") {
+        document.getElementById("title").textContent = "";
+        datos.classList.add("hide");
         document.getElementById("result").innerHTML = "";
         cambio();
     }
 }
 function cambio() {
-    alert("perro");
     var a = btn.getElementsByTagName("i")[0].textContent;
     if (a == "menu") {
         var a_1 = btn.getElementsByTagName("i")[0].textContent = "delete";
@@ -49,15 +51,6 @@ function cambio() {
         btn.setAttribute("data-tooltip", "calcular valores");
     }
 }
-// if (a == "delete"){
-// }else{
-//     if (a == "menu"){
-//    let y= document.getElementById("title").textContent;
-//    alert(y);
-//    if (y == "Progreccion arimetica"){
-//         pro_ari();
-//    }}
-// }
 function escritor(titulo, resultados) {
     var new_oject = document.createElement("p");
     new_oject.innerHTML = "<h4 style='red'>" + titulo + "</h4><p>" + resultados + "</p>";
