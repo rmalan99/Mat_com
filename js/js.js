@@ -5,20 +5,21 @@
 var option = document.body.getElementsByClassName("container")[1].getElementsByTagName("div");
 var btn = document.getElementById("accion").getElementsByTagName("a")[0];
 var datos = document.getElementById("datos");
-option[0].addEventListener("click", function () { fan(0, "an1", "an2", "ani"); });
-option[1].addEventListener("click", function () { fan(1, "g_a1", "g_a2", "g_an"); });
-option[2].addEventListener("click", function () { fan(2, "va", "n", "n"); });
-option[3].addEventListener("click", function () { fan(3, "va", "n", "i"); });
-option[4].addEventListener("click", function () { fan(4, "a", "b", "c"); });
+option[0].addEventListener("click", function () { campo_inicial(0, "an1", "an2", "ani"); });
+option[1].addEventListener("click", function () { campo_inicial(1, "g_a1", "g_a2", "g_an"); });
+option[2].addEventListener("click", function () { campo_inicial(2, "capital", "periodo", "taza de interes"); });
+option[3].addEventListener("click", function () { campo_inicial(3, "capital", "periodo", "taza de interes"); });
 btn.addEventListener("click", function () { accion(); });
-function fan(child) {
+// function anti_error():void{
+//     if ()
+// }
+function campo_inicial(child) {
     var valores = [];
     for (var _a = 1; _a < arguments.length; _a++) {
         valores[_a - 1] = arguments[_a];
     }
     datos.classList.remove("hide");
     var text = option[child].firstElementChild.textContent;
-    alert(text);
     document.getElementById("title").textContent = text;
     for (var i = 0; i < datos.childElementCount; i++) {
         datos.getElementsByTagName("input")[i].setAttribute("placeholder", valores[i]);
@@ -31,6 +32,18 @@ function accion() {
         if (titulo == "Progreccion arimetica") {
             cambio();
             pro_ari();
+        }
+        if (titulo == "progreccion Geometrica") {
+            cambio();
+            pro_geo();
+        }
+        if (titulo == "interes simple") {
+            cambio();
+            int_simp();
+        }
+        if (titulo == "interes compuesto") {
+            cambio();
+            int_comp();
         }
     }
     if (a == "delete") {
@@ -52,10 +65,15 @@ function cambio() {
     }
 }
 function escritor(titulo, resultados) {
-    var new_oject = document.createElement("p");
-    new_oject.innerHTML = "<h4 style='red'>" + titulo + "</h4><p>" + resultados + "</p>";
-    var ojete = document.getElementById("result");
-    ojete.appendChild(new_oject);
+    if (isNaN(resultados) == true) {
+        // anti_error();
+    }
+    else {
+        var new_oject = document.createElement("p");
+        new_oject.innerHTML = "<h4 style='red'>" + titulo + "</h4><p>" + resultados + "</p>";
+        var ojete = document.getElementById("result");
+        ojete.appendChild(new_oject);
+    }
 }
 function pro_ari() {
     //[an1=0]/[an2=1]/[ani=2]
@@ -69,4 +87,39 @@ function pro_ari() {
     escritor("valor en la posicion", coleccion[2]);
     total = calculo + diferencia;
     escritor("es", total);
+}
+function pro_geo() {
+    var coleccion = [];
+    for (var _i = 0; _i < datos.childElementCount; _i++) {
+        coleccion[_i] = parseInt(datos.getElementsByTagName("input")[_i].value);
+    }
+    var r = coleccion[1] / coleccion[0];
+    var total = (coleccion[0] * (Math.pow(r, (coleccion[2] - 1))));
+    escritor("la razon es ", r);
+    escritor("valor en la posicion", coleccion[2]);
+    escritor("es", total);
+}
+function int_simp() {
+    //interes simple= capital * taza_interes * periodo)
+    var coleccion = [];
+    for (var _i = 0; _i < datos.childElementCount; _i++) {
+        coleccion[_i] = parseFloat(datos.getElementsByTagName("input")[_i].value);
+    }
+    var total;
+    coleccion[2] = coleccion[2] / 100;
+    total = (coleccion[0] * coleccion[2] * coleccion[1]);
+    escritor("El interes simple es de", total);
+    escritor("obteniendo un total de ", total + coleccion[0]);
+}
+function int_comp() {
+    //interes compuesto= (capital *(1 + (taza de interes/100)) ** periodo)
+    var coleccion = [];
+    for (var _i = 0; _i < datos.childElementCount; _i++) {
+        coleccion[_i] = parseFloat(datos.getElementsByTagName("input")[_i].value);
+    }
+    var total;
+    coleccion[2] = coleccion[2] / 100;
+    total = (coleccion[0] * (1 + Math.pow((coleccion[2] / 100), coleccion[1])));
+    escritor("El interes compuesto es de", total);
+    escritor("Obteniendo un total de ", total + coleccion[0]);
 }

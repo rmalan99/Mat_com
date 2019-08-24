@@ -6,17 +6,20 @@ var option=document.body.getElementsByClassName("container")[1].getElementsByTag
 var btn=document.getElementById("accion").getElementsByTagName("a")[0];
 var datos=document.getElementById("datos");
 
-option[0].addEventListener("click",() => {fan(0,"an1","an2","ani")});
-option[1].addEventListener("click",() => {fan(1,"g_a1","g_a2","g_an")});
-option[2].addEventListener("click",() => {fan(2,"va","n","n")});
-option[3].addEventListener("click",() => {fan(3,"va","n","i")});
-option[4].addEventListener("click",() => {fan(4,"a","b","c")});
+option[0].addEventListener("click",() => {campo_inicial(0,"an1","an2","ani")});
+option[1].addEventListener("click",() => {campo_inicial(1,"g_a1","g_a2","g_an")});
+option[2].addEventListener("click",() => {campo_inicial(2,"capital","periodo","taza de interes")});
+option[3].addEventListener("click",() => {campo_inicial(3,"capital","periodo","taza de interes")});
+
 btn.addEventListener("click",()=> {accion()});
 
-function fan(child:number,...valores: string[]){
+// function anti_error():void{
+//     if ()
+// }
+
+function campo_inicial(child:number,...valores: string[]){
     datos.classList.remove("hide");
     let text=option[child].firstElementChild.textContent;
-    alert(text);
     document.getElementById("title").textContent=text;
     for(var i=0;i<datos.childElementCount;i++){                          
         datos.getElementsByTagName("input")[i].setAttribute("placeholder",valores[i]);
@@ -29,6 +32,18 @@ function accion(){
         if (titulo == "Progreccion arimetica"){
             cambio();
             pro_ari();
+        }
+        if (titulo == "progreccion Geometrica"){
+            cambio();
+            pro_geo();
+        }
+        if (titulo == "interes simple"){
+            cambio();
+            int_simp();
+        }
+        if (titulo == "interes compuesto"){
+            cambio();
+            int_comp();
         }
     }
     if (a == "delete"){
@@ -50,11 +65,16 @@ function cambio(){
 
 }
 function escritor(titulo:string,resultados:number){
-
-    let new_oject=document.createElement("p");
-    new_oject.innerHTML=`<h4 style='red'>${titulo}</h4><p>${resultados}</p>`
-    let ojete=document.getElementById("result");
-    ojete.appendChild(new_oject);
+    if (isNaN(resultados) == true){
+        // anti_error();
+    }
+    else{
+        let new_oject=document.createElement("p");
+        new_oject.innerHTML=`<h4 style='red'>${titulo}</h4><p>${resultados}</p>`
+        let ojete=document.getElementById("result");
+        ojete.appendChild(new_oject);
+    }
+    
 }
 
 function pro_ari(){
@@ -70,4 +90,41 @@ function pro_ari(){
     total=calculo + diferencia;  
     escritor("es",total);
     
+}
+function pro_geo(){
+    let coleccion:Array<number>=[];
+    for (var _i=0;_i<datos.childElementCount;_i++){
+        coleccion[_i]= parseInt(datos.getElementsByTagName("input")[_i].value);
+    }
+    let r:number= coleccion[1]/coleccion[0];
+    let total:number=(coleccion[0]*(r ** (coleccion[2]-1)));
+    escritor("la razon es ",r);
+    escritor("valor en la posicion",coleccion[2]);
+    escritor("es",total);
+}
+
+function int_simp(){
+    //interes simple= capital * taza_interes * periodo)
+    let coleccion:Array<number>=[];
+    for (var _i=0;_i<datos.childElementCount;_i++){
+        coleccion[_i]= parseFloat(datos.getElementsByTagName("input")[_i].value);
+    }
+    let total:number;
+    coleccion[2]=coleccion[2]/100;
+    total= (coleccion[0] * coleccion[2] * coleccion[1]);
+    escritor("El interes simple es de",total);
+    escritor("obteniendo un total de ",total + coleccion[0]);
+}
+
+function int_comp(){
+    //interes compuesto= (capital *(1 + (taza de interes/100)) ** periodo)
+    let coleccion:Array<number>=[];
+    for (var _i=0;_i<datos.childElementCount;_i++){
+        coleccion[_i]= parseFloat(datos.getElementsByTagName("input")[_i].value);
+    }
+    let total:number;
+    coleccion[2]=coleccion[2]/100;
+    total= (coleccion[0] * (1 + (coleccion[2]/100) ** coleccion[1]));
+    escritor("El interes compuesto es de",total);
+    escritor("Obteniendo un total de ",total + coleccion[0]);
 }
