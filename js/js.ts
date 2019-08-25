@@ -3,22 +3,26 @@
     // btn.setAttribute("data-tooltip","limpiar panel"); 
 //.getElementsByTagName("i")[0].textContent="send" 
 var option=document.body.getElementsByClassName("container")[1].getElementsByTagName("div");
+var option_nav_mobile=document.getElementById("nav-mobile").getElementsByTagName("li");
 var btn=document.getElementById("accion").getElementsByTagName("a")[0];
 var datos=document.getElementById("datos");
+var arana=document.getElementById("arana");
 
 option[0].addEventListener("click",() => {campo_inicial(0,"an1","an2","ani")});
 option[1].addEventListener("click",() => {campo_inicial(1,"g_a1","g_a2","g_an")});
 option[2].addEventListener("click",() => {campo_inicial(2,"capital","periodo","taza de interes")});
 option[3].addEventListener("click",() => {campo_inicial(3,"capital","periodo","taza de interes")});
-
+option_nav_mobile[0].addEventListener("click",() => {campo_inicial(0,"an1","an2","ani")});
+option_nav_mobile[1].addEventListener("click",() => {campo_inicial(1,"g_a1","g_a2","g_an")});
+option_nav_mobile[2].addEventListener("click",() => {campo_inicial(2,"capital","periodo","taza de interes")});
+option_nav_mobile[3].addEventListener("click",() => {campo_inicial(3,"capital","periodo","taza de interes")});
 btn.addEventListener("click",()=> {accion()});
 
-// function anti_error():void{
-//     if ()
-// }
 
 function campo_inicial(child:number,...valores: string[]){
+    arana.classList.add("hide")
     datos.classList.remove("hide");
+    btn.classList.remove("hide");
     let text=option[child].firstElementChild.textContent;
     document.getElementById("title").textContent=text;
     for(var i=0;i<datos.childElementCount;i++){                          
@@ -61,6 +65,9 @@ function cambio(){
     }else{
         let a:string=btn.getElementsByTagName("i")[0].textContent="menu";
         btn.setAttribute("data-tooltip","calcular valores");
+        btn.classList.add("hide");
+        arana.setAttribute("src","./icon/arana+texto.png");
+        arana.classList.remove("hide");
     }
 
 }

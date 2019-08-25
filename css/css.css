@@ -34,3 +34,13 @@ input {
     height: 350px;
     margin: 6px;
 }
+
+#arana {
+    position: relative;
+    top: 150px;
+}
+
+#accion {
+    position: relative;
+    bottom: 100px;
+}
